@@ -1,0 +1,10 @@
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\bin\Debug\Assignment 4.exe.config
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\bin\Debug\Assignment 4.exe
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\bin\Debug\Assignment 4.pdb
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment_4.currencyForm.resources
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment_4.infoForm.resources
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment_4.Properties.Resources.resources
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment 4.csproj.GenerateResource.Cache
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment 4.exe
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment 4.pdb
+C:\Users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 4\obj\Debug\Assignment 4.csprojResolveAssemblyReference.cache

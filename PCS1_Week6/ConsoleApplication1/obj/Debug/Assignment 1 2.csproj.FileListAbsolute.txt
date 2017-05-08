@@ -1,0 +1,6 @@
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\obj\Debug\Assignment 1 2.csprojResolveAssemblyReference.cache
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS1_Week6\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

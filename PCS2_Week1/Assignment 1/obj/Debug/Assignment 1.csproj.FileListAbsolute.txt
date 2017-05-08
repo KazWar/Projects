@@ -1,0 +1,9 @@
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\bin\Debug\Assignment 1.exe.config
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\bin\Debug\Assignment 1.exe
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\bin\Debug\Assignment 1.pdb
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment 1.csprojResolveAssemblyReference.cache
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment_1.Form1.resources
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment_1.Properties.Resources.resources
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment 1.csproj.GenerateResource.Cache
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment 1.exe
+c:\users\kazik\onedrive\documenten\visual studio 2015\Projects\PCS2_Week1\Assignment 1\obj\Debug\Assignment 1.pdb
