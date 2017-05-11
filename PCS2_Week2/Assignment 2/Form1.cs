@@ -28,6 +28,8 @@ namespace Assignment_2
         }
         public void addPanel()
         {
+            listOfTrafficLights.ElementAt(1).
+
             foreach (TrafficLight Property in listOfTrafficLights)
             {
                 lblName.Text = Property.Name;
