@@ -66,7 +66,7 @@ namespace Assignment_1
             }
         }
 
-        void ClearAllText(Control con)
+        private void ClearAllText(Control con)
         {
             foreach (Control c in con.Controls)
             {

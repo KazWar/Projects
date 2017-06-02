@@ -7,13 +7,10 @@ using System.Drawing;
 
 namespace Assignment_2
 {
-    public class TColor
+    public class ColorDefinition
     {
         public string Name { get; set; }
         public Color Color { get; set; }
-
-        public TColor()
-        {
-        }
+        
     }
 }
