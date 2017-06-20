@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addPlayerControl.cs">
+    <Compile Include="PlayerEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="addPlayerControl.Designer.cs">
-      <DependentUpon>addPlayerControl.cs</DependentUpon>
+    <Compile Include="PlayerEditorControl.Designer.cs">
+      <DependentUpon>PlayerEditorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="CardGameForm.cs">
@@ -72,16 +72,17 @@
     </Compile>
     <Compile Include="MethodController.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="playerControl.cs">
+    <Compile Include="PlayerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="playerControl.Designer.cs">
-      <DependentUpon>playerControl.cs</DependentUpon>
+    <Compile Include="PlayerControl.Designer.cs">
+      <DependentUpon>PlayerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Players.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="addPlayerControl.resx">
-      <DependentUpon>addPlayerControl.cs</DependentUpon>
+    <EmbeddedResource Include="PlayerEditorControl.resx">
+      <DependentUpon>PlayerEditorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CardGameForm.resx">
       <DependentUpon>CardGameForm.cs</DependentUpon>
@@ -89,8 +90,8 @@
     <EmbeddedResource Include="GameStartForm.resx">
       <DependentUpon>GameStartForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="playerControl.resx">
-      <DependentUpon>playerControl.cs</DependentUpon>
+    <EmbeddedResource Include="PlayerControl.resx">
+      <DependentUpon>PlayerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -9,15 +9,18 @@ namespace Assignment_3
     public class Card
     {
 
-        public Card(string cardSuite, string cardType)
+        public Card(string cardSuite, string cardType, int cardStrength)
         {
             CardSuite = cardSuite;
             CardType = cardType;
+            CardStrength = CardStrength;
         }
 
         public string CardSuite { get; set; }
 
         public string CardType { get; set; }
+
+        public int CardStrength { get; set; }
 
         public enum CardSuits
         {
@@ -30,9 +33,9 @@ namespace Assignment_3
         public enum CardTypes
         {
             Ace,
-            Jack,
-            Queen,
             King,
+            Queen,
+            Jack,
             Ten
         }
     }

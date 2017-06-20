@@ -12,7 +12,13 @@ namespace Assignment_3
         public string Name { get; set; }
         public int Points { get; set; }
  
-        BindingList<object> listOfOwnCards = new BindingList<object>();
+        public BindingList<object> listOfOwnCards = new BindingList<object>();
+
+        public Player(string playerName)
+        {
+            Name = playerName;
+            Points = 0;
+        }
 
         public void addToOwnCards (Card card)
         {

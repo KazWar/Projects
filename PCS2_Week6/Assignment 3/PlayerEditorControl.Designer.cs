@@ -1,6 +1,6 @@
 ﻿namespace Assignment_3
 {
-    partial class addPlayerControl
+    partial class PlayerEditorControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.fieldLabel = new System.Windows.Forms.Label();
             this.textBoxPlayerName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // fieldLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Player Name : ";
+            this.fieldLabel.AutoSize = true;
+            this.fieldLabel.Location = new System.Drawing.Point(3, 5);
+            this.fieldLabel.Name = "fieldLabel";
+            this.fieldLabel.Size = new System.Drawing.Size(101, 17);
+            this.fieldLabel.TabIndex = 0;
+            this.fieldLabel.Text = "Player Name : ";
             // 
             // textBoxPlayerName
             // 
@@ -48,13 +48,13 @@
             this.textBoxPlayerName.Size = new System.Drawing.Size(149, 22);
             this.textBoxPlayerName.TabIndex = 1;
             // 
-            // addPlayerControl
+            // PlayerEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxPlayerName);
-            this.Controls.Add(this.label1);
-            this.Name = "addPlayerControl";
+            this.Controls.Add(this.fieldLabel);
+            this.Name = "PlayerEditorControl";
             this.Size = new System.Drawing.Size(264, 34);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -63,7 +63,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fieldLabel;
         private System.Windows.Forms.TextBox textBoxPlayerName;
     }
 }

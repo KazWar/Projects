@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAmountOfPlayers = new System.Windows.Forms.ComboBox();
             this.buttonStartGame = new System.Windows.Forms.Button();
             this.PlayerPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
@@ -43,18 +43,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Select the amount of players : ";
             // 
-            // comboBox1
+            // comboBoxAmountOfPlayers
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxAmountOfPlayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAmountOfPlayers.FormattingEnabled = true;
+            this.comboBoxAmountOfPlayers.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
-            this.comboBox1.Location = new System.Drawing.Point(218, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxAmountOfPlayers.Location = new System.Drawing.Point(218, 6);
+            this.comboBoxAmountOfPlayers.Name = "comboBoxAmountOfPlayers";
+            this.comboBoxAmountOfPlayers.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxAmountOfPlayers.TabIndex = 2;
+            this.comboBoxAmountOfPlayers.SelectedIndexChanged += new System.EventHandler(this.comboBoxAmountOfPlayers_SelectedIndexChanged);
             // 
             // buttonStartGame
             // 
@@ -80,7 +81,7 @@
             this.ClientSize = new System.Drawing.Size(355, 221);
             this.Controls.Add(this.PlayerPanel);
             this.Controls.Add(this.buttonStartGame);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxAmountOfPlayers);
             this.Controls.Add(this.label1);
             this.Name = "GameStartForm";
             this.Text = "Card Game Start";
@@ -92,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAmountOfPlayers;
         private System.Windows.Forms.Button buttonStartGame;
         private System.Windows.Forms.FlowLayoutPanel PlayerPanel;
     }

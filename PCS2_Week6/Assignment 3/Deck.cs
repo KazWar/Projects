@@ -8,7 +8,12 @@ namespace Assignment_3
 {
     public class Deck
     {
-        List<Card> CardDeck = new List<Card>();
+        public List<Card> CardDeck = new List<Card>();
+
+        public Deck()
+        {
+            CreateDeck();
+        }
 
         public void CreateDeck()
         {
@@ -18,10 +23,15 @@ namespace Assignment_3
             {
                 foreach (Enum e in Enum.GetValues(typeof(Card.CardTypes)))
                 {
-                    Card card = new Card(((Card.CardSuits)i).ToString(), e.ToString());
+                    Card card = new Card(((Card.CardSuits)i).ToString(), e.ToString(),(Card.CardSuits)i);
                     CardDeck.Add(card);
                 }
             }
+        }
+
+        public void CardToString()
+        {
+            string.Format("{0} of {1}", CardType, CardSuite);
         }
     }
 }

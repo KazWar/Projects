@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,80 +13,145 @@ namespace Assignment_3
 {
     public partial class GameStartForm : Form
     {
-        
         public GameStartForm()
         {
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Recursively finds all controls of specified type within the given container control
+        /// </summary>
+        /// <param name="container">Container control to traverse</param>
+        /// <param name="controlType">Type of controls to find</param>
+        /// <param name="controls">Collection where found controls are accumulated</param>
+        /// <returns>Found controls</returns>
+        /// <remarks>
+        /// This is a fine example of recursion - a function which calls itself.
+        /// Here, when container has child controls, we dive inside them in further search of the wanted controls.
+        /// Again, if any of child controls has more child controls, the recursion will proceed into them, 
+        /// theoretically infinitely. Practically this will eat up computer memory and throw the dreaded
+        /// StackOverflow exception, which is a clear sign of recursion gone wrong :-)
+        /// </remarks>
+        private List<Control> GetAllControls(Control container, Type controlType, List<Control> controls = null)
         {
-            PlayerPanel.Controls.Clear();
+            if (controls == null)
+            { 
+                controls = new List<Control>();
+            }
 
-            for (int i = 0; i <= comboBox1.SelectedIndex; i++)
+            if (container.GetType() == controlType)
             {
-                addPlayerControl playerName = new addPlayerControl();
-                PlayerPanel.Controls.Add(playerName);
+                controls.Add(container);
+            }
+
+            if (container.Controls != null)
+            {
+                foreach (Control child in container.Controls)
+                {
+                     GetAllControls(child, controlType, controls);
+                }
+            }
+
+            return controls;
+        }
+
+
+        /// <summary>
+        /// Starts the game
+        /// </summary>
+        /// <param name="inputs">List of text boxes containing player names</param>
+        private void StartGame(List<Control> inputs)
+        {
+            var players = new Players();
+            foreach (TextBox input in inputs)
+            {
+                var player = new Player(input.Text);
+                players.Add(player);
+            }
+
+            this.Hide();
+            CardGameForm GameForm = new CardGameForm(players);
+            GameForm.Activate();
+            GameForm.Show();
+        }
+
+
+        /// <summary>
+        /// Validates player names
+        /// </summary>
+        /// <param name="list">List of textboxes containing player names</param>
+        /// <returns>List of found errors or null, if no errors found</returns>
+        private List<string> ValidateInputs(List<Control> list)
+        {
+            var errors = new List<string>();
+            foreach (TextBox input in list)
+            {
+                if (string.IsNullOrWhiteSpace(input.Text.Trim()))
+                {
+                    errors.Add(String.Format("Player #{0} required", input.Tag));
+                }
+            }
+            return errors.Count > 0 ? errors : null;
+        }
+
+
+        /// <summary>
+        /// Displays the found input validation errors
+        /// </summary>
+        /// <param name="errors">Errors to display</param>
+        private void DisplayErrors(List<string> errors)
+        {
+            if (errors != null && errors.Count > 0)
+            {
+                var message = String.Join("\n", errors);
+                MessageBox.Show(message);
             }
         }
+
+
+        /// <summary>
+        /// Creates inputs for entering the specified amount of players
+        /// </summary>
+        /// <param name="count">Amount of players to add</param>
+        private void AddPlayers(int count)
+        {
+            if (count > 0)
+            {
+                PlayerPanel.Controls.Clear();
+                while (PlayerPanel.Controls.Count < count)
+                {
+                    var label = (PlayerPanel.Controls.Count + 1).ToString();
+                    PlayerEditorControl playerName = new PlayerEditorControl(label);
+                    PlayerPanel.Controls.Add(playerName);
+                }
+            }
+        }
+
 
         private void buttonStartGame_Click(object sender, EventArgs e)
         {
-            List<string> listOfInputs = new List<string>();
-
-            foreach (Control control in PlayerPanel.Controls)
+            // Collect all inputs
+            var inputs = GetAllControls(PlayerPanel, typeof(TextBox));
+            // Validate the entered values
+            var errors = ValidateInputs(inputs);
+            // If no errors, play the game
+            if (errors == null)
             {
-                if (control is TextBox)
-                {
-                    listOfInputs.Add(control.Text);
-                }
-            }
-
-            ValidateInput(listOfInputs);
-        }
-
-        private void ValidateInput(List<string> list)
-        {
-            List<string> listOfErrors = new List<string>();
-
-            foreach (string input in list)
-            {
-                if (string.IsNullOrWhiteSpace(input) == true)
-                {
-                    listOfErrors.Add(input);
-                }
-            }
-
-            if (listOfErrors != null)
-            {
-                MessageBox.Show("Please enter all the player's names");
+                StartGame(inputs);
             }
             else
+            // Otherwise display errors
             {
-                this.Hide();
-                CardGameForm GameForm = new CardGameForm();
-                GameForm.Activate();
-                GameForm.Show();
+                DisplayErrors(errors);
             }
         }
+
+
+        private void comboBoxAmountOfPlayers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddPlayers(comboBoxAmountOfPlayers.SelectedIndex + 1);
+        }
+
+
     }
 }
-
-
-
-//foreach (Control control in PlayerPanel.Controls)
-//{
-//    if (string.IsNullOrWhiteSpace(control.Text) == true)
-//    {
-//        MessageBox.Show("Please enter all the player's names");
-//        break;
-//    }
-//    else
-//    {
-//        this.Hide();
-//        CardGameForm GameForm = new CardGameForm();
-//        GameForm.Activate();
-//        GameForm.Show();
-//        break;
-//    }
-//}

@@ -10,12 +10,21 @@ using System.Windows.Forms;
 
 namespace Assignment_3
 {
-    public partial class addPlayerControl : UserControl
+    public partial class PlayerEditorControl : UserControl
     {
-        public addPlayerControl()
+        private PlayerEditorControl()
         {
             InitializeComponent();
         }
+
+
+        public PlayerEditorControl(string tag) : this()
+        {
+            textBoxPlayerName.Tag = tag;
+            fieldLabel.Text = String.Format("Player #{0}", tag);
+        }
+
+
         override public string Text
         {
             get { return textBoxPlayerName.Text; }
