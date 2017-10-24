@@ -1,0 +1,60 @@
+﻿{
+    "title": "Root",
+    "script-disabled": "home.sh",
+    "items": [
+        "home.md",
+        "about.md",
+        "contact.md",
+        {
+            "name": "story.sh",
+            "title": "Short story",
+            "type": "script"
+        },
+        {
+            "name": "input.sh",
+            "title": "Input example",
+            "type": "script"
+        },
+        {
+            "name": "terminal.png",
+            "title": "Terminal Icon",
+            "type": "image"
+        }
+    ],
+    "folders": [
+        {
+            "name": "articles",
+            "title": "Articles",
+            "items": [
+                "article-1.md",
+                "article-2.md"
+            ],
+            "script": "clear; ls"
+        },
+        {
+            "name": "documentation",
+            "title": "Documentation",
+            "script": "clear; ls",
+            "folders": [
+                {
+                    "name": "technical",
+                    "title": "Technical Documentation",
+                    "items": [
+                        "doc-tech-1.md",
+                        "doc-tech-2.md"
+                    ],
+                    "script": "clear; ls"
+                },
+                {
+                    "name": "user",
+                    "title": "User Documentation",
+                    "items": [
+                        "doc-user-1.md",
+                        "doc-user-2.md"
+                    ],
+                    "script": "clear; ls"
+                }
+            ]
+        }
+    ]
+}
