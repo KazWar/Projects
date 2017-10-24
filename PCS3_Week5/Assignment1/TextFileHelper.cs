@@ -22,6 +22,7 @@ namespace Assignment1
                 {
                     writer.WriteLine(line);
                 }
+                writer.Close();
             }
             finally
             {
