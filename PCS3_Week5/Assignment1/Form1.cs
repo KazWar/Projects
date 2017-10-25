@@ -13,22 +13,45 @@ namespace Assignment1
 {
     public partial class Form1 : Form
     {
-        TextFileHelper TFH;
-        string FileName = null;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        
+        // File name, as entered in the input box
+        private string FileName
+        {
+            get
+            {
+                var fileName = tbTextFileNameInput.Text;
+                if (!String.IsNullOrWhiteSpace(fileName))
+                {
+                    // Add .txt extension, unless the user did it already
+                    fileName = Path.ChangeExtension(fileName, ".txt");
+                    tbTextFileNameInput.Text = fileName;
+                }
+                return fileName;
+            }
+            set { tbTextFileNameInput.Text = value; }
+        }
+
+        
+        // Editor lines
+        private List<string> Lines
+        {
+            get { return RtbInput.Lines.ToList(); }
+            set { RtbInput.Lines = value.ToArray(); }
+        }
+
+        
         private void btnSaveToFile_Click(object sender, EventArgs e)
         {
-            if (!(string.IsNullOrWhiteSpace(tbTextFileNameInput.Text)))
+            if (!(string.IsNullOrWhiteSpace(FileName)))
             {
-                FileName = tbTextFileNameInput.Text + ".txt";
-                TFH = new TextFileHelper();
-                var rtbInput = RtbInput.Lines.ToList();
-                TFH.SaveToFile(FileName, rtbInput);
+                var fileHelper = new TextFileHelper();
+                fileHelper.SaveToFile(FileName, Lines);
             }
             else
             {
@@ -40,8 +63,8 @@ namespace Assignment1
         {
             if (FileName != null)
             {
-                var TFH = new TextFileHelper();
-                RtbInput.Text = TFH.LoadFromFile(FileName).ToString();
+                var fileHelper = new TextFileHelper();
+                Lines = fileHelper.LoadFromFile(FileName);
             }
             else
             {
@@ -51,12 +74,12 @@ namespace Assignment1
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var OFD = new OpenFileDialog();
-            OFD.Filter = "Text files (*.txt) | *.txt";
-
-            OFD.ShowDialog();
-            FileName = OFD.FileName;
-            tbTextFileNameInput.Text = FileName;
+            var openFileDialog = new OpenFileDialog()
+            {
+                Filter = "Text files (*.txt) | *.txt"
+            };
+            openFileDialog.ShowDialog();
+            FileName = openFileDialog.FileName;
         }
     }
 }

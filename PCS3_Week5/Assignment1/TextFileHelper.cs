@@ -22,6 +22,7 @@ namespace Assignment1
                 {
                     writer.WriteLine(line);
                 }
+                writer.Close();
             }
             finally
             {
@@ -41,16 +42,19 @@ namespace Assignment1
 
         public void SaveToFile(string fileName, List<string> lines, bool allowAppend = true)
         {
-            using (var stream = new FileStream(fileName, allowAppend ? FileMode.OpenOrCreate : FileMode.Create, FileAccess.Write))
+            using (var stream = new FileStream(
+                fileName, 
+                allowAppend ? FileMode.OpenOrCreate : FileMode.Create, FileAccess.Write))
             {
-                var writer = new StreamWriter(stream);
-                stream.Seek(0, SeekOrigin.End);
-                foreach (var line in lines)
-                {
-                    writer.WriteLine(line);
+                using (var writer = new StreamWriter(stream)) {
+                    stream.Seek(0, SeekOrigin.End);
+                    foreach (var line in lines)
+                    {
+                        writer.WriteLine(line);
+                    }
                 }
-            }
         }
+    }
 
 
         public List<string> LoadFromFile(string fileName)
@@ -58,11 +62,13 @@ namespace Assignment1
             var lines = new List<string>();
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
-                StreamReader reader = new StreamReader(stream);
-                while (!reader.EndOfStream)
+                using (var reader = new StreamReader(stream))
                 {
-                    var line = reader.ReadLine();
-                    lines.Add(line);
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        lines.Add(line);
+                    }
                 }
             }
             return lines;
