@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,8 @@ namespace AppForCandyStore
         private double[] pricesPackedCandy;//the corresponding prices of the packed candy
         private List<int> listOfWeights;
         private double pricePerKilogramMixedCandy;
+        private string FileName;
+        private List<string> Lines;
 
         public FormForCandyStore()
         {
@@ -24,7 +27,6 @@ namespace AppForCandyStore
             this.myStore = new Store("Kazik's candy store");
             this.Text = this.myStore.Name;
             this.addSomeData();
-
         }
 
         private void btnSell_Click(object sender, EventArgs e)
@@ -63,22 +65,27 @@ namespace AppForCandyStore
                         break;
 
                     case "MixedCandy":
-                        foreach (TextBox control in gbMixedCandy.Controls)
+                        listOfWeights = new List<int>();
+
+                        foreach (Control control in gbMixedCandy.Controls)
                         {
-                            if (!((string.IsNullOrWhiteSpace(control.Text)) && Convert.ToInt32(control.Text) > 0))
+                            if (control is TextBox)
                             {
-                                try
+                                if (!((string.IsNullOrWhiteSpace(control.Text)) && Convert.ToInt32(control.Text) > 0))
                                 {
-                                    listOfWeights.Add(Convert.ToInt32(control));
+                                    try
+                                    {
+                                        listOfWeights.Add(Convert.ToInt32(control.Text));
+                                    }
+                                    catch (Exception E)
+                                    {
+                                        MessageBox.Show(E.Message);
+                                    }
                                 }
-                                catch (Exception E)
+                                else
                                 {
-                                    MessageBox.Show(E.Message);
+                                    MessageBox.Show("Please provide a mixed candy amount higher or equal than 1 gram.");
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Please provide a mixed candy amount higher or equal than 1 gram.");
                             }
                         }
 
@@ -158,11 +165,41 @@ namespace AppForCandyStore
                 MessageBox.Show(E.Message);
             }
         }
-
+        
         private void btnSaveInformationToFile_Click(object sender, EventArgs e)
         {
-            //todo, assignment 3
+            Lines = new List<string>();
 
+            try
+            {
+                foreach (var item in lbOverview.Items)
+                {
+                    Lines.Add(item.ToString());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            var SaveFileDialog = new SaveFileDialog()
+            {
+                Filter = "Text files (*.txt) | *.txt"
+            };
+            SaveFileDialog.ShowDialog();
+            FileName = SaveFileDialog.FileName;
+
+            if (!(string.IsNullOrWhiteSpace(FileName)))
+            {
+                var fileHelper = new TextFileHelper();
+                fileHelper.SaveToFile(FileName, Lines);
+            }
+            else
+            {
+                MessageBox.Show("Nothing has been saved.");
+            }
         }
 
         //the methods below are already implemented

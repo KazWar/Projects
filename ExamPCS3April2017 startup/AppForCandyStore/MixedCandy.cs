@@ -23,12 +23,17 @@ namespace AppForCandyStore
 
         public override double GetPrice()
         {
-            return (((weightLollipops + weightChewingGums + weightGummyDrops) * pricePerKilogram) / 1000);
+            return ((GetTotalWeight() * pricePerKilogram) / 1000);
         }
 
         public override string GetInfo()
         {
-            return base.GetInfo() + string.Format($", mixed candy with total weight {weightGummyDrops + weightChewingGums + weightLollipops}");
+            return base.GetInfo() + string.Format($", mixed candy with total weight {GetTotalWeight()}");
+        }
+
+        public int GetTotalWeight()
+        {
+            return weightChewingGums + weightGummyDrops + weightLollipops;
         }
     }
 }
