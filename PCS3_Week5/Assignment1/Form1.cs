@@ -32,7 +32,7 @@ namespace Assignment1
             }
             else
             {
-                MessageBox.Show("Please enter a filename or select one.");
+                MessageBox.Show("Please enter a filename or select a file.");
             }
         }
 
@@ -45,7 +45,7 @@ namespace Assignment1
             }
             else
             {
-                MessageBox.Show("Please select a filename.");
+                MessageBox.Show("Please select a file.");
             }
         }
 
