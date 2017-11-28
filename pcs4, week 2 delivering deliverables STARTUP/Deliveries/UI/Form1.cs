@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Deliveries.Model;
 
 namespace Deliveries
 {
@@ -36,18 +37,20 @@ namespace Deliveries
                 MessageBox.Show(E.Message);
             }
 
-            listBox1. = TC.Deliverables;
+            listBox1.DataSource = TC.Deliverables;
         }
 
         private void btSortByWeight_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            listBox1.DataSource = TC.SortByWeight();
+            // listBox1.DataSource = TC.SortByWeight();
         }
 
         private void btSortByName_Click(object sender, EventArgs e)
         {
-
+            listBox1.DataSource = null;
+            listBox1.Items.Clear();
+            listBox1.DataSource = TC.People.SortBy(PersonSortOrder.Name, SortDirection.Ascending);
         }
 
         private void btSortById_Click(object sender, EventArgs e)

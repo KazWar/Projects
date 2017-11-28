@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Deliveries
+namespace Deliveries.Model
 {
 
-    public class Deliverable:IComparable<Deliverable>
+    public class Deliverable
     {
         private int id;    //the unique id of a deliverable
         private int weight; //the weight (in grams) of this deliverable
@@ -27,11 +27,6 @@ namespace Deliveries
         public override string ToString()
         {
             return string.Format($"Id:{id}, weight:{weight}, to be delivered at : {buyer.ToString()}");
-        }
-
-        public int CompareTo(Deliverable other)
-        {
-            
         }
     }
 }

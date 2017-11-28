@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Deliveries
+namespace Deliveries.Model
 {
-    public class sortController
+    public enum SortDirection
     {
-
+        Ascending,
+        Descending
     }
 }

@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Deliveries
+namespace Deliveries.Model
 {
     class TransportCompany
     {
-        private List<Person> myPersons;
-        private List<Deliverable> myDeliverables;
+        private People people;
+        private Deliverables deliverables;
 
         public TransportCompany()
         {
-            this.myPersons = new List<Person>();
-            this.myDeliverables = new List<Deliverable>();
+            this.people = new People();
+            this.deliverables = new Deliverables();
         }
 
-        public List<Person> Persons { get { return this.myPersons; } }
-        public List<Deliverable> Deliverables { get { return this.myDeliverables; } }
+        public People People { get { return this.people; } }
+        public Deliverables Deliverables { get { return this.deliverables; } }
         
         public Person FindPerson(int id)
         {
-            foreach (Person p in this.myPersons)
+            foreach (Person p in this.people)
             {
                 if (p.ID == id)
                 {
@@ -38,7 +38,7 @@ namespace Deliveries
         {
             if (this.FindPerson(p.ID) == null)
             {
-                this.myPersons.Add(p);
+                this.people.Add(p);
             }
             else
             {
@@ -48,7 +48,7 @@ namespace Deliveries
 
         public Deliverable FindDeliverable(int id)
         {
-            foreach (Deliverable d in this.myDeliverables)
+            foreach (Deliverable d in this.deliverables)
             {
                 if (d.ID == id)
                 {
@@ -62,7 +62,7 @@ namespace Deliveries
         {
             if (FindDeliverable(d.ID) == null)
             {
-                myDeliverables.Add(d);
+                deliverables.Add(d);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace Deliveries
             try
             {
                 sr = new StreamReader(new FileStream(filename, FileMode.Open, FileAccess.Read));
-                this.myPersons.Clear();
+                this.people.Clear();
                 String name, street, postalcode, city;
                 int id, housenr;
                 name = sr.ReadLine();
@@ -87,7 +87,7 @@ namespace Deliveries
                     postalcode = sr.ReadLine();
                     city = sr.ReadLine();
                     id = Convert.ToInt32(sr.ReadLine());
-                    this.myPersons.Add(new Person(id, name, street, housenr, postalcode, city));
+                    this.people.Add(new Person(id, name, street, housenr, postalcode, city));
                     name = sr.ReadLine();
                     name = sr.ReadLine(); //and again read a line, because of the delimiter between persons(line with the stars)
                 }
@@ -120,9 +120,9 @@ namespace Deliveries
                             id = Convert.ToInt32(splitLines[0]);
                             weight = Convert.ToInt32(splitLines[1]);
                             buyerID = Convert.ToInt32(splitLines[2]);
-                            Person selectedPerson = myPersons.FirstOrDefault(x => x.ID == buyerID);
+                            Person selectedPerson = people.FirstOrDefault(x => x.ID == buyerID);
 
-                            myDeliverables.Add(new Deliverable(id, weight, selectedPerson));   
+                            deliverables.Add(new Deliverable(id, weight, selectedPerson));   
                         }
                     }
                 }
