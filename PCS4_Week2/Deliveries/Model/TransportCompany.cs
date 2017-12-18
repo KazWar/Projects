@@ -101,84 +101,28 @@ namespace Deliveries.Model
 
         public void LoadDeliverablesFromFile(string filename)
         {
-            List<string> Lines = new List<string>();
-
-            using (var stream = new FileStream(filename, FileMode.Open))
+            foreach (var line in File.ReadAllLines(filename))
             {
-                using (var reader = new StreamReader(stream))
+                var fields = line.Split(' ');
+                if (fields.Length == 3)
                 {
-                    while (!reader.EndOfStream)
-                    {
-                        int id, weight, buyerID;
-                        var line = reader.ReadLine();
-                        Lines.Add(line);
-
-                        foreach (string dataLine in Lines)
-                        {
-                            string[] splitLines = dataLine.Split(' ');
-                            
-                            id = Convert.ToInt32(splitLines[0]);
-                            weight = Convert.ToInt32(splitLines[1]);
-                            buyerID = Convert.ToInt32(splitLines[2]);
-                            Person selectedPerson = people.FirstOrDefault(x => x.ID == buyerID);
-
-                            deliverables.Add(new Deliverable(id, weight, selectedPerson));   
-                        }
-                    }
+                    var deliverable = new Deliverable(
+                        Convert.ToInt32(fields[0]),
+                        Convert.ToInt32(fields[1]),
+                        people.FirstOrDefault(x => x.ID == Convert.ToInt32(fields[2]))
+                    );
+                    deliverables.Add(deliverable);
                 }
-            }
+            };
+
+            // Get all lines of text file
+            // Loop over them ..
+            //   -- split line in fields
+            //   -- parse fields and create Deliverable
+            //      -- find buyer in people collection
+            //   -- add deliverable to collection
         }
 
 
-
-        /// <summary>
-        /// SortByWeight sorts the elements of the deliverables-list from a low weight to a high weight.
-        /// </summary>
-        public void SortByWeight()
-        {
-        }
-
-        /// <summary>
-        /// SortByName sorts the elements of the deliverables-list alfabetically by buyer's name.
-        /// </summary>
-        public void SortByName()
-        {
-            //todo
-
-        }
-
-        /// <summary>
-        /// SortById sorts the elements of the deliverables-list from a low id to a high id.
-        /// </summary>
-        public void SortById()
-        {
-            //todo
-
-        }
-
-        /// <summary>
-        /// SortByAddress sorts the elements of the deliverables-list "alfabetically by street; then by increasing house-number".
-        /// So elements with a different street are sorted alfabetically by street.
-        /// Elements with the same street are sorted by increasing house-number. 
-        /// </summary>
-        public void SortByAddress()
-        {
-            //todo
-
-        }
-
-        /// <summary>
-        /// SortForPostman sorts the elements of the deliverables-list alfabetically by street,
-        /// then by postman-ordered house-numbers.
-        /// The postman walks along the street, first the side of the street with the odd numbers (in an increasing order),
-        /// then back on the other side of the street for the even house-numbers (in a decreasing order). 
-        /// </summary>
-        public void SortForPostman()
-        {
-            //todo
-
-        }
-
-        
     }
 }

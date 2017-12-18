@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Deliveries.Model
 {
-    public enum DeliverableSortOrder
+    public class People : List<Person>
     {
-        Id,
-        Weight
+
     }
 }

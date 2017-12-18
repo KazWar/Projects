@@ -11,14 +11,14 @@ using Deliveries.Model;
 
 namespace Deliveries
 {
-    public partial class Form1 : Form
+    public partial class formDeliveryManager : Form
     {
 
         string dataFilePersonsLocation = @"C:\Users\kazik\OneDrive\Documenten\Visual Studio 2015\Projects\pcs4, week 2 delivering deliverables STARTUP\Deliveries\data\persons.txt";
         string dataFileDeliverablesLocation = @"C:\Users\kazik\OneDrive\Documenten\Visual Studio 2015\Projects\pcs4, week 2 delivering deliverables STARTUP\Deliveries\data\deliverables.txt";
         TransportCompany TC;
 
-        public Form1()
+        public formDeliveryManager()
         {
             InitializeComponent();
         }
@@ -37,35 +37,55 @@ namespace Deliveries
                 MessageBox.Show(E.Message);
             }
 
-            listBox1.DataSource = TC.Deliverables;
+            SortBy(DeliverableSortOrder.Id);
+        }
+
+        /// <summary>
+        /// Remembers the last used sort order,
+        /// so that we can re-sort by the same field, when direction checkbox is clicked
+        /// </summary>
+        private DeliverableSortOrder CurrentOrder = DeliverableSortOrder.Id;
+
+        /// <summary>
+        /// Sorts the collection of deliverables and re-populates the list
+        /// </summary>
+        /// <param name="order">Sort order</param>
+        private void SortBy(DeliverableSortOrder order)
+        {
+            if (TC != null && TC.Deliverables != null)
+            {
+                var direction = checkboxSortDescending.Checked ? SortDirection.Descending : SortDirection.Ascending;
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                listBox1.DataSource = TC.Deliverables.SortBy(order, direction);
+                listBox1.DisplayMember = "DisplayText";
+                CurrentOrder = order;
+            }
         }
 
         private void btSortByWeight_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            // listBox1.DataSource = TC.SortByWeight();
+            SortBy(DeliverableSortOrder.Weight);
         }
 
         private void btSortByName_Click(object sender, EventArgs e)
         {
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
-            listBox1.DataSource = TC.People.SortBy(PersonSortOrder.Name, SortDirection.Ascending);
+            SortBy(DeliverableSortOrder.BuyerName);
         }
 
         private void btSortById_Click(object sender, EventArgs e)
         {
-
+            SortBy(DeliverableSortOrder.Id);
         }
 
         private void btSortByAddress_Click(object sender, EventArgs e)
         {
-
+            SortBy(DeliverableSortOrder.BuyerAddress);
         }
 
-        private void btSortForPostman_Click(object sender, EventArgs e)
+        private void checkboxSortDescending_CheckedChanged(object sender, EventArgs e)
         {
-
+            SortBy(CurrentOrder);
         }
     }
 }
