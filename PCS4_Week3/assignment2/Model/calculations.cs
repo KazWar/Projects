@@ -8,14 +8,29 @@ namespace assignment2.Model
 {
     public class calculations
     {
-        public int sumSquares(int n)
+        public double Result { get;  set; }
+        public double sumSquares(int n)
         {
-            if (n == 0)
-                return 1;
+            if (n == -1)
+            {
+                return Result;
+            }
 
-            Math.Pow(n, 2);
+            Result += Math.Pow(n, 2);
 
-            return sumSquares(n - 1);
+            return sumSquares((n - 1));
+        }
+
+        public double sum(int[] x,int n)
+        {
+            if (n == -1)
+            {
+                return Result;
+            }
+
+            Result += x[n];
+
+            return sum(x, --n);
         }
     }
 }

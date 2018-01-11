@@ -40,10 +40,11 @@
             // 
             // tbValueA
             // 
-            this.tbValueA.Location = new System.Drawing.Point(190, 8);
+            this.tbValueA.Location = new System.Drawing.Point(190, 12);
             this.tbValueA.Name = "tbValueA";
             this.tbValueA.Size = new System.Drawing.Size(100, 22);
             this.tbValueA.TabIndex = 0;
+            this.tbValueA.Text = "5";
             // 
             // label1
             // 
@@ -72,6 +73,7 @@
             this.lbMethods.Name = "lbMethods";
             this.lbMethods.Size = new System.Drawing.Size(120, 100);
             this.lbMethods.TabIndex = 3;
+            this.lbMethods.SelectedIndexChanged += new System.EventHandler(this.lbMethods_SelectedIndexChanged);
             // 
             // label2
             // 

@@ -15,6 +15,7 @@ namespace assignment2
     {
         calculations calc = new calculations();
         List<string> choices = new List<string>() { "A", "B", "C", "D", "E", "F" };
+        int[] arrayOfInts = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
         public recursiveFunctionsForm()
         {
             InitializeComponent();
@@ -23,13 +24,17 @@ namespace assignment2
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            int ValueA = Convert.ToInt32(tbValueA.Text);
+            //int ValueB = Convert.ToInt32(tbValueB.Text);
+            string choice = lbMethods.SelectedValue.ToString();
 
-            switch (lbMethods.SelectedValue.ToString())
+            switch (choice)
             {
                 case "A":
-                    tbResult.Text = calc.sumSquares(Convert.ToInt32(tbValueA.Text)).ToString();
+                    calc.sumSquares(ValueA);
                     break;
                 case "B":
+                    calc.sum(arrayOfInts, ValueA);
                     break;
                 case "C":
                     break;
@@ -39,9 +44,14 @@ namespace assignment2
                     break;
                 case "F":
                     break;
-                default:
-                    break;
             }
+
+            tbResult.Text = calc.Result.ToString();
+        }
+
+        private void lbMethods_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            calc.Result = 0;
         }
     }
 }
